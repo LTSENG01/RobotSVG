@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+
+</head>
+<body>
+
+<!--<object type="image/svg+xml" id="curve" data="curve.svg" width="100" height="100">-->
+
+<!--</object>-->
+
+
+<svg id="curve">
+
+    <path
+            id="path"
+            d="m 34.620555,157.50815 c 0,0 72.188875,-59.828676 147.815315,0"
+            style="fill:none;stroke:#FF0000;stroke-width:4.90039968;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1;"></path>
+
+</svg>
+
+<br>
+
+
+<object type="image/svg+xml" id="robot" data="Robot.svg" width="100" height="100" style="margin-left: 60px">
+
+</object>
+
+<br>
+
+
+<script>
+
+
+    /*
+     Ultrasonic sensor(s) or LIDAR (rounded) --> network tables --> ds-dashboard
+     Different ranges, color-coded
+      - Red     3-10 cm
+      - Orange  10-20 cm
+      - Yellow  20-30 cm
+      - Green   30+ cm
+
+    mapping function from distance to y-pos of the curve
+
+    rotate the robot based on the gyro (rotate the curve with it!)
+
+    */
+
+    const curve = document.querySelector('#curve');
+    const path = document.querySelector("path");
+
+    console.log("Animating robot figure.");
+
+    TweenMax.to(curve, 2, {y: -100, ease: Power2.easeOut});
+
+    TweenMax.to(path, 1, {stroke: "#FF8800"});
+
+    TweenMax.to(path, 1, {stroke: "#0F0", delay: 1});
+
+
+
+    TweenMax.to(curve, 2, {y: 0, delay: 2, ease: Power2.easeOut});
+
+    TweenMax.to(path, 1, {stroke: "#FF8800", delay: 2});
+
+    TweenMax.to(path, 1, {stroke: "#FF0000", delay: 3});
+
+
+    function setTweenTo(object, duration, items) {
+        TweenMax.to(object, duration, items);
+    }
+
+
+
+
+</script>
+
+
+</body>
+</html>
